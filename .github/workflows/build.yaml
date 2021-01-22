@@ -22,7 +22,7 @@ jobs:
         run: |
           docker run --rm -v ${PWD}/nrf:/workdir/ncs/nrf \
             coderbyheart/fw-nrfconnect-nrf-docker \
-            /bin/bash -c 'cd ncs/nrf/samples/nrf9160/at_client && west build -p always -b ${{ matrix.board }}'
+            /bin/bash -c 'cd ncs/nrf/samples/nrf9160/at_client && west update && west build -p always -b ${{ matrix.board }}'
           cp nrf/samples/nrf9160/at_client/build/zephyr/merged.hex build/at_client-${{ matrix.board }}.hex
       - uses: actions/upload-artifact@v2
         with:
